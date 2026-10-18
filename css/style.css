@@ -1,0 +1,100 @@
+/* ---------- 1. متغیرها: رنگ‌ها را فقط از اینجا عوض کنید ---------- */
+:root{
+  --bg:#11120D; --bg2:#0b0c08; --card:#191a14; --line:#2d2e25;
+  --text:#FFFBF4; --muted:#a8a28f; --olive:#565449; --accent:#D8CFBC; --accent2:#FFFBF4;
+  --radius:16px; --font:"Vazirmatn","Segoe UI",Tahoma,sans-serif;
+}
+/* ---------- 2. پایه ---------- */
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{background:var(--bg);color:var(--text);font-family:var(--font);line-height:1.9;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+img{max-width:100%}
+.wrap{max-width:1080px;margin:auto;padding:0 20px}
+.narrow{max-width:640px}
+.section{padding:90px 0}
+.alt{background:var(--bg2)}
+.eyebrow{color:var(--accent);font-size:.8rem;letter-spacing:.12em;margin-bottom:8px}
+h1,h2,h3{line-height:1.4}
+h2{font-size:clamp(1.6rem,4vw,2.4rem);margin-bottom:32px}
+.grad{background:linear-gradient(90deg,var(--accent2),var(--accent),#8f8a78);-webkit-background-clip:text;background-clip:text;color:transparent}
+/* ---------- 3. هدر و منو ---------- */
+.header{position:fixed;inset:0 0 auto 0;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:14px 20px;transition:.3s}
+.header.scrolled{background:rgba(17,18,13,.85);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:300;letter-spacing:.08em;direction:ltr}
+.brand b{color:var(--accent);font-weight:600}
+.nav{display:flex;gap:26px;align-items:center;font-size:.92rem;color:var(--muted)}
+.nav a:hover{color:var(--text)}
+.nav-cta{border:1px solid var(--accent);color:var(--text);padding:6px 18px;border-radius:99px}
+.nav-cta:hover{background:var(--accent);color:var(--bg)}
+.menu-btn{display:none;background:none;border:0;width:32px;height:32px;position:relative;cursor:pointer}
+.menu-btn span{position:absolute;left:4px;right:4px;height:2px;background:var(--text);transition:.3s}
+.menu-btn span:first-child{top:11px}.menu-btn span:last-child{top:19px}
+.menu-btn.open span:first-child{top:15px;transform:rotate(45deg)}
+.menu-btn.open span:last-child{top:15px;transform:rotate(-45deg)}
+/* ---------- 4. بخش اصلی (Hero) ---------- */
+.hero{min-height:100svh;display:grid;grid-template-columns:1fr 1.1fr;align-items:center;gap:20px;max-width:1200px;margin:auto;padding:110px 20px 60px;position:relative}
+.hero-text{display:flex;flex-direction:column;align-items:flex-start}
+.hero-media{position:relative;perspective:1000px}
+.hero-media img{width:100%;display:block;-webkit-mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 55%,transparent 100%);mask-image:radial-gradient(ellipse 70% 70% at 50% 50%,#000 55%,transparent 100%);animation:bob 6s ease-in-out infinite;transition:transform .15s ease-out;will-change:transform}
+@keyframes bob{50%{translate:0 -14px}}
+.logo-img{border-radius:9px;object-fit:cover}
+.hero h1{font-size:clamp(2.1rem,5.5vw,4rem);font-weight:800;line-height:1.25}
+.lead{color:var(--muted);max-width:520px;margin:20px 0 32px}
+.glow{position:absolute;pointer-events:none;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(216,207,188,.16),transparent 65%);top:10%;left:50%;transform:translateX(-50%);filter:blur(30px);animation:float 8s ease-in-out infinite;z-index:-1}
+@keyframes float{50%{transform:translate(-50%,30px)}}
+.actions{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:12px 28px;border-radius:99px;font:inherit;font-size:.95rem;cursor:pointer;border:1px solid transparent;transition:.25s}
+.primary{background:var(--accent);color:var(--bg);font-weight:600}
+.primary:hover{background:var(--accent2);transform:translateY(-2px)}
+.ghost{border-color:var(--line);color:var(--text)}
+.ghost:hover{border-color:var(--accent)}
+/* ---------- 5. درباره و آمار ---------- */
+.two{display:grid;grid-template-columns:1fr 1.2fr;gap:48px;align-items:start}
+.two p{color:var(--muted)}
+.stats{display:flex;gap:32px;margin-top:28px}
+.stats li{font-size:1.8rem;font-weight:600;color:var(--accent)}
+.stats span{display:block;font-size:.8rem;color:var(--muted);font-weight:400}
+/* ---------- 6. کارت‌ها ---------- */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:26px;transition:.3s}
+.card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.card .num{color:var(--accent);font-size:.85rem;direction:ltr;display:block}
+.card h3{margin:8px 0;font-size:1.1rem}
+.card p{color:var(--muted);font-size:.92rem}
+/* ---------- 7. نمونه‌کارها ---------- */
+.work{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.thumb{aspect-ratio:4/3;border-radius:var(--radius);border:1px solid var(--line);margin-bottom:12px;transition:.4s}
+.t1{background:linear-gradient(135deg,#3b3a31,#11120D)}
+.t2{background:linear-gradient(135deg,#565449,#11120D)}
+.t3{background:linear-gradient(135deg,#6b6757,#11120D)}
+.project:hover .thumb{transform:scale(1.02);border-color:var(--accent)}
+.project span{color:var(--muted);font-size:.85rem}
+/* ---------- 8. مراحل ---------- */
+.steps{display:grid;gap:14px}
+.steps li{display:flex;gap:18px;align-items:flex-start;background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.steps b{flex:none;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:rgba(216,207,188,.12);color:var(--accent)}
+.steps p{color:var(--muted);font-size:.92rem}
+/* ---------- 9. فرم و فوتر ---------- */
+.form{display:grid;gap:16px}
+.form label{display:grid;gap:6px;font-size:.88rem;color:var(--muted)}
+input,textarea{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;color:var(--text);font:inherit;outline:0;transition:.2s}
+input:focus,textarea:focus{border-color:var(--accent)}
+input.error,textarea.error{border-color:#ef4444}
+.form-msg{min-height:1.5em;font-size:.9rem;color:var(--accent)}
+.footer{display:flex;justify-content:space-between;padding:28px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem}
+/* ---------- 10. انیمیشن ظاهر شدن هنگام اسکرول ---------- */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .7s,transform .7s}
+.reveal.show{opacity:1;transform:none}
+/* ---------- 11. موبایل ---------- */
+@media(max-width:760px){
+  .menu-btn{display:block}
+  .nav{position:fixed;inset:60px 0 auto 0;flex-direction:column;background:var(--bg);padding:24px;border-bottom:1px solid var(--line);transform:translateY(-130%);transition:.35s;gap:18px}
+  .nav.open{transform:none}
+  .two{grid-template-columns:1fr;gap:20px}
+  .hero{grid-template-columns:1fr;padding-top:96px;min-height:auto}
+  .hero-media{order:-1}
+  .section{padding:64px 0}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
